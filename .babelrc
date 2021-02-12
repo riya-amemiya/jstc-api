@@ -95,9 +95,6 @@
         ],
         [
             "transform-inline-environment-variables"
-        ],
-        [
-            "remove-unused-vars"
         ]
     ]
 }
