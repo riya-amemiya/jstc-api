@@ -22,10 +22,11 @@ router.get( '/python', ( req, res ) =>
                 allowImportExportEverywhere: true,
                 allowReserved: true
             } )
-            res.status( 200 ).send( { code: python( code, "python" ).code } );
+            res.status( 200 ).send( { code: new python( { codes: code, mode: "python", option: { optimisation: false } } ).parse.code } );
         }
     } )()
 } );
+
 router.get( '/ruby', ( req, res ) =>
 {
     ( async () =>
@@ -39,7 +40,7 @@ router.get( '/ruby', ( req, res ) =>
                 allowImportExportEverywhere: true,
                 allowReserved: true
             } )
-            res.status( 200 ).send( { code: ruby( code, "ruby" ).code } );
+            res.status( 200 ).send( { code: new ruby( { codes: code, mode: "ruby", option: { optimisation: false } } ).parse.code } );
         }
     } )()
 } );

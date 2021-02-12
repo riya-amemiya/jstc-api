@@ -37,7 +37,13 @@ router.get('/python', (a, b) => {
         allowReserved: !0
       });
       b.status(200).send({
-        code: (0, _core.python)(d, "python").code
+        code: new _core.python({
+          codes: d,
+          mode: "python",
+          option: {
+            optimisation: !1
+          }
+        }).parse.code
       });
     }
   })();
@@ -52,7 +58,13 @@ router.get('/python', (a, b) => {
         allowReserved: !0
       });
       b.status(200).send({
-        code: (0, _core.ruby)(d, "ruby").code
+        code: new _core.ruby({
+          codes: d,
+          mode: "ruby",
+          option: {
+            optimisation: !1
+          }
+        }).parse.code
       });
     }
   })();

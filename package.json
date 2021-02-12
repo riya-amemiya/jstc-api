@@ -26,7 +26,6 @@
         "@babel/plugin-transform-template-literals": "^7.12.13",
         "@babel/preset-env": "^7.12.13",
         "@babel/preset-typescript": "^7.12.13",
-        "@jstc/core": "^1.0.10",
         "acorn": "^8.0.5",
         "acorn-loose": "^8.0.2",
         "acorn-node": "^2.0.1",
@@ -47,6 +46,7 @@
         "helmet": "^4.4.1"
     },
     "devDependencies": {
+        "@jstc/core": "^1.0.19",
         "@types/cors": "^2.8.9",
         "@types/express": "^4.17.11",
         "@types/helmet": "^4.0.0",
