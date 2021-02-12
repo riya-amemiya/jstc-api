@@ -26,7 +26,11 @@ app.use((0, _helmet.default)()), app.use((0, _cors.default)());
 const router = _express.default.Router();
 
 exports.router = router;
-router.get('/python', function (a, b) {
+router.get('/', function (a, b) {
+  b.status(200).send({
+    code: ""
+  });
+}), router.get('/python', function (a, b) {
   _asyncToGenerator(function* () {
     if (typeof a.query.code === "string") {
       const c = yield Promise.resolve().then(function () {

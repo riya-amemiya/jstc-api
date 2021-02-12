@@ -9,6 +9,10 @@ app.use( cors() );
 const router = express.Router();
 
 // routerにルーティングの動作を記述する
+router.get( '/', ( req, res ) =>
+{
+    res.status( 200 ).send( { code: "" } );
+} );
 router.get( '/python', ( req, res ) =>
 {
     ( async () =>
