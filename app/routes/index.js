@@ -1,1 +1,84 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.router=void 0;var _express=_interopRequireDefault(require("express")),_helmet=_interopRequireDefault(require("helmet")),_cors=_interopRequireDefault(require("cors")),_core=require("@jstc/core");function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _getRequireWildcardCache(){if("function"!=typeof WeakMap)return null;var e=new WeakMap;return _getRequireWildcardCache=function(){return e},e}function _interopRequireWildcard(e){if(e&&e.__esModule)return e;if(null===e||"object"!=typeof e&&"function"!=typeof e)return{default:e};var r=_getRequireWildcardCache();if(r&&r.has(e))return r.get(e);var t={},o=Object.defineProperty&&Object.getOwnPropertyDescriptor;for(var n in e)if(Object.prototype.hasOwnProperty.call(e,n)){var u=o?Object.getOwnPropertyDescriptor(e,n):null;u&&(u.get||u.set)?Object.defineProperty(t,n,u):t[n]=e[n]}return t.default=e,r&&r.set(e,t),t}function asyncGeneratorStep(e,r,t,o,n,u,i){try{var a=e[u](i),s=a.value}catch(e){return void t(e)}a.done?r(s):Promise.resolve(s).then(o,n)}function _asyncToGenerator(e){return function(){var r=this,t=arguments;return new Promise((function(o,n){function u(e){asyncGeneratorStep(a,o,n,u,i,"next",e)}function i(e){asyncGeneratorStep(a,o,n,u,i,"throw",e)}var a=e.apply(r,t);u(void 0)}))}}const app=(0,_express.default)();app.use((0,_helmet.default)()),app.use((0,_cors.default)());const router=_express.default.Router();exports.router=router,router.get("/python",(function(e,r){_asyncToGenerator((function*(){if("string"==typeof e.query.code){const t=(yield Promise.resolve().then((function(){return _interopRequireWildcard(require("acorn"))}))).parse(e.query.code,{ecmaVersion:"latest",allowAwaitOutsideFunction:!0,allowImportExportEverywhere:!0,allowReserved:!0});r.status(200).send({code:new _core.python({codes:t,mode:"python",option:{optimisation:!1}}).parse.code})}}))()})),router.get("/ruby",(function(e,r){_asyncToGenerator((function*(){if("string"==typeof e.query.code){const t=(yield Promise.resolve().then((function(){return _interopRequireWildcard(require("acorn"))}))).parse(e.query.code,{ecmaVersion:"latest",allowAwaitOutsideFunction:!0,allowImportExportEverywhere:!0,allowReserved:!0});r.status(200).send({code:new _core.ruby({codes:t,mode:"ruby",option:{optimisation:!1}}).parse.code})}}))()})),app.use((function(e,r){r.status(404),r.render("error",{param:{status:404,message:"not found"}})}));
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: !0
+});
+exports.router = void 0;
+
+var _express = _interopRequireDefault(require("express")),
+    _helmet = _interopRequireDefault(require("helmet")),
+    _cors = _interopRequireDefault(require("cors")),
+    _core = require("@jstc/core");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var a = new WeakMap(); return _getRequireWildcardCache = function () { return a; }, a; }
+
+function _interopRequireWildcard(a) { if (a && a.__esModule) return a; if (a === null || typeof a !== "object" && typeof a !== "function") return { default: a }; var b = _getRequireWildcardCache(); if (b && b.has(a)) return b.get(a); var c = {}, d = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var e in a) if (Object.prototype.hasOwnProperty.call(a, e)) { var f = d ? Object.getOwnPropertyDescriptor(a, e) : null; f && (f.get || f.set) ? Object.defineProperty(c, e, f) : c[e] = a[e]; } return c.default = a, b && b.set(a, c), c; }
+
+function asyncGeneratorStep(a, b, c, d, e, f, g) { try { var h = a[f](g), i = h.value; } catch (a) { return void c(a); } h.done ? b(i) : Promise.resolve(i).then(d, e); }
+
+function _asyncToGenerator(a) { return function () { var b = this, c = arguments; return new Promise(function (d, e) { function f(a) { asyncGeneratorStep(h, d, e, f, g, "next", a); } function g(a) { asyncGeneratorStep(h, d, e, f, g, "throw", a); } var h = a.apply(b, c); f(undefined); }); }; }
+
+const app = (0, _express.default)();
+app.use((0, _helmet.default)()), app.use((0, _cors.default)());
+
+const router = _express.default.Router();
+
+exports.router = router;
+router.get('/python', function (a, b) {
+  _asyncToGenerator(function* () {
+    if (typeof a.query.code === "string") {
+      const c = yield Promise.resolve().then(function () {
+        return _interopRequireWildcard(require("acorn"));
+      }),
+            d = c.parse(a.query.code, {
+        ecmaVersion: "latest",
+        allowAwaitOutsideFunction: !0,
+        allowImportExportEverywhere: !0,
+        allowReserved: !0
+      }),
+            e = new _core.python({
+        codes: d,
+        mode: "python",
+        option: {
+          optimisation: !1
+        }
+      });
+      b.status(200).send({
+        code: e.parse.code
+      });
+    }
+  })();
+}), router.get('/ruby', function (a, b) {
+  _asyncToGenerator(function* () {
+    if (typeof a.query.code === "string") {
+      const c = yield Promise.resolve().then(function () {
+        return _interopRequireWildcard(require("acorn"));
+      }),
+            d = c.parse(a.query.code, {
+        ecmaVersion: "latest",
+        allowAwaitOutsideFunction: !0,
+        allowImportExportEverywhere: !0,
+        allowReserved: !0
+      }),
+            e = new _core.ruby({
+        codes: d,
+        mode: "ruby",
+        option: {
+          optimisation: !1
+        }
+      });
+      b.status(200).send({
+        code: e.parse.code
+      });
+    }
+  })();
+}), app.use(function (a, b) {
+  b.status(404), b.render('error', {
+    param: {
+      status: 404,
+      message: 'not found'
+    }
+  });
+});

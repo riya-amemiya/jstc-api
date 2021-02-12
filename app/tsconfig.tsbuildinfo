@@ -637,7 +637,7 @@
         "affectsGlobalScope": false
       },
       "../src/routes/index.ts": {
-        "version": "e86c353e2d297f8abb4a20dad3fff53f15d389e8b0ee5894dac79afd7e8bae03",
+        "version": "ad1db9edc9303f82a7bd8242b14e8af3fb19fb03bd8fe4c1cb26e3d44f0e5d46",
         "signature": "eb8a83d40f36a1e47fda559d1643e0d7c1d457de853999b73a8b6dd6b360ce11",
         "affectsGlobalScope": false
       },
