@@ -18,5 +18,5 @@ const port = process.env.PORT || 5000// port番号を指定
 app.use( '/', router );
 
 //サーバ起動
-app.listen( port );
+app.listen( port, () => console.log( `Listening on ${ port }` ) );
 console.log( 'listen on port ' + port );
