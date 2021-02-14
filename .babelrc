@@ -92,9 +92,6 @@
         ],
         [
             "@babel/plugin-proposal-logical-assignment-operators"
-        ],
-        [
-            "transform-inline-environment-variables"
         ]
     ]
 }

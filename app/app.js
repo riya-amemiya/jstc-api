@@ -15,7 +15,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
   extended: !0
 })), app.use(bodyParser.json());
-const port = 5000;
-app.use('/', _routes.router), app.listen(5000, function () {
+const port = process.env.PORT || 5000;
+app.use('/', _routes.router), app.listen(port, function () {
   return console.log("Listening on ".concat(port));
-}), console.log("listen on port 5000");
+}), console.log('listen on port ' + port);
