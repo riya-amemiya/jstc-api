@@ -19,19 +19,26 @@ router.get( '/python', ( req, res ) =>
     {
         if ( req.query.code )
         {
-            if ( typeof req.query.code === "string" )
+            try
             {
-                const acorn = await import( "acorn" )
-                const code: any = acorn.parse( req.query.code, {
-                    ecmaVersion: "latest",
-                    allowAwaitOutsideFunction: true,
-                    allowImportExportEverywhere: true,
-                    allowReserved: true
-                } )
-                return new python( { codes: code, mode: "python", option: { optimisation: false } } )
+                if ( typeof req.query.code === "string" )
+                {
+                    const acorn = await import( "acorn" )
+                    const code: any = acorn.parse( req.query.code, {
+                        ecmaVersion: "latest",
+                        allowAwaitOutsideFunction: true,
+                        allowImportExportEverywhere: true,
+                        allowReserved: true
+                    } )
+                    return new python( { codes: code, mode: "python", option: { optimisation: false } } )
+                }
+            } catch ( error )
+            {
+                return ""
             }
         }
-    } )().then( show => res.status( 200 ).send( { code: show?.parse.code || "" } ) )
+        return ""
+    } )().then( show => res.status( 200 ).send( { code: show ? show?.parse.code : "" } ) )
 } );
 
 router.get( '/ruby', ( req, res ) =>
@@ -40,19 +47,26 @@ router.get( '/ruby', ( req, res ) =>
     {
         if ( req.query.code )
         {
-            if ( typeof req.query.code === "string" )
+            try
             {
-                const acorn = await import( "acorn" )
-                const code: any = acorn.parse( req.query.code, {
-                    ecmaVersion: "latest",
-                    allowAwaitOutsideFunction: true,
-                    allowImportExportEverywhere: true,
-                    allowReserved: true
-                } )
-                return new ruby( { codes: code, mode: "ruby", option: { optimisation: false } } )
+                if ( typeof req.query.code === "string" )
+                {
+                    const acorn = await import( "acorn" )
+                    const code: any = acorn.parse( req.query.code, {
+                        ecmaVersion: "latest",
+                        allowAwaitOutsideFunction: true,
+                        allowImportExportEverywhere: true,
+                        allowReserved: true
+                    } )
+                    return new ruby( { codes: code, mode: "ruby", option: { optimisation: false } } )
+                }
+            } catch ( error )
+            {
+                return ""
             }
         }
-    } )().then( show => res.status( 200 ).send( { code: show?.parse.code } ) )
+        return ""
+    } )().then( show => res.status( 200 ).send( { code: show ? show?.parse.code : "" } ) )
 } );
 
 // -------------------------------------------------
