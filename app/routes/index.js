@@ -14,22 +14,42 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var a = new WeakMap(); return _getRequireWildcardCache = function() { return a; }, a; }
 
-function _interopRequireWildcard(a) { if (a && a.__esModule) return a; if (a === null || typeof a !== "object" && typeof a !== "function") return { default: a }; var b = _getRequireWildcardCache(); if (b && b.has(a)) return b.get(a); var c = {},
-        d = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var e in a)
-        if (Object.prototype.hasOwnProperty.call(a, e)) { var f = d ? Object.getOwnPropertyDescriptor(a, e) : null;
-            f && (f.get || f.set) ? Object.defineProperty(c, e, f) : c[e] = a[e]; }
-    return c.default = a, b && b.set(a, c), c; }
+function _interopRequireWildcard(a) {
+    if (a && a.__esModule) return a;
+    if (a === null || typeof a !== "object" && typeof a !== "function") return { default: a };
+    var b = _getRequireWildcardCache();
+    if (b && b.has(a)) return b.get(a);
+    var c = {},
+        d = Object.defineProperty && Object.getOwnPropertyDescriptor;
+    for (var e in a)
+        if (Object.prototype.hasOwnProperty.call(a, e)) {
+            var f = d ? Object.getOwnPropertyDescriptor(a, e) : null;
+            f && (f.get || f.set) ? Object.defineProperty(c, e, f) : c[e] = a[e];
+        }
+    return c.default = a, b && b.set(a, c), c;
+}
 
-function asyncGeneratorStep(a, b, c, d, e, f, g) { try { var h = a[f](g),
-            i = h.value; } catch (a) { return void c(a); }
-    h.done ? b(i) : Promise.resolve(i).then(d, e); }
+function asyncGeneratorStep(a, b, c, d, e, f, g) {
+    try {
+        var h = a[f](g),
+            i = h.value;
+    } catch (a) { return void c(a); }
+    h.done ? b(i) : Promise.resolve(i).then(d, e);
+}
 
-function _asyncToGenerator(a) { return function() { var b = this,
-            c = arguments; return new Promise(function(d, e) {
+function _asyncToGenerator(a) {
+    return function() {
+        var b = this,
+            c = arguments;
+        return new Promise(function(d, e) {
             function f(a) { asyncGeneratorStep(h, d, e, f, g, "next", a); }
 
-            function g(a) { asyncGeneratorStep(h, d, e, f, g, "throw", a); } var h = a.apply(b, c);
-            f(undefined); }); }; }
+            function g(a) { asyncGeneratorStep(h, d, e, f, g, "throw", a); }
+            var h = a.apply(b, c);
+            f(undefined);
+        });
+    };
+}
 
 const app = (0, _express.default)();
 app.use((0, _helmet.default)()), app.use((0, _cors.default)());
